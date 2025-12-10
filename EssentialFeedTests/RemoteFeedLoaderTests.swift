@@ -51,11 +51,19 @@ final class RemoteFeedLoaderTests: XCTestCase {
             
             client.complete(withStatusCode: code, at: index)
             XCTAssertEqual(capturedErrors, [.invalidData])
-           // capturedErrors = []
         }
-//        client.complete(withStatusCode: 400)
-//        
-//        XCTAssertEqual(capturedErrors, [.invalidData])
+    }
+    
+    func test_load_dekuversErrorOn200HTTPResponseWithInvalidJSON() {
+        let (sut, client) = makeSUT()
+        
+        var capturedErrors = [RemoteFeedLoader.Error]()
+        sut.load { capturedErrors.append($0) }
+        
+        let invalidJSON = Data(bytes: "invalid json".utf8)
+        client.complete(withStatusCode: 200, data: invalidJSON)
+        XCTAssertEqual(capturedErrors, [.invalidData])
+        
     }
     
     // MARK: - Helpers
@@ -68,32 +76,27 @@ final class RemoteFeedLoaderTests: XCTestCase {
 
     private class HTTPClientSpy: HTTPClient {
 
- //       var requestedURLs = [URL]()
         var requestedURLs: [URL] {
             messages.map { $0.url }
         }
-//        var completions = [(Error) -> Void]()
         private var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
         
         func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
             messages.append((url, completion))
-//            completions.append(completion)
-           // requestedURLs.append(url)
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            //completions[index](error)
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
             let response = HTTPURLResponse(
                 url: requestedURLs[index],
                 statusCode: code,
                 httpVersion: nil,
                 headerFields: nil
             )!
-            messages[index].completion(.success(response))
+            messages[index].completion(.success(data,response))
         }
     }
 }
