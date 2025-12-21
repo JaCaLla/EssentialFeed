@@ -21,6 +21,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A6F60E72EF7EE8E00912214 /* EssentialFeed.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeed.xctestplan; sourceTree = "<group>"; };
 		5AFC67FC2EE8382500AA4A23 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFC68072EE8382500AA4A23 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -60,6 +61,7 @@
 		5AFC67F22EE8382500AA4A23 = {
 			isa = PBXGroup;
 			children = (
+				5A6F60E72EF7EE8E00912214 /* EssentialFeed.xctestplan */,
 				5AFC67FE2EE8382500AA4A23 /* EssentialFeed */,
 				5AFC680B2EE8382500AA4A23 /* EssentialFeedTests */,
 				5AFC67FD2EE8382500AA4A23 /* Products */,
