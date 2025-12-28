@@ -13,12 +13,12 @@ public final class LocalFeedLoader {
     
     private let store: FeedStore
     private let currentDate: () -> Date
-
+    
     public init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
     }
-
+    
     public func save(_ feed: [FeedImage], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] cacheDeletionError in
             guard let self else { return }
@@ -31,10 +31,13 @@ public final class LocalFeedLoader {
     }
     
     public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { error  in
-            if let error {
+        store.retrieve { result  in
+            switch result {
+            case let .found(feed, _):
+                completion(.success(feed.toModels()))
+            case let .failure(error):
                 completion(.failure(error))
-            } else {
+            case .empty:
                 completion(.success([]))
             }
         }
@@ -52,9 +55,20 @@ private extension Array where Element == FeedImage {
     func toLocal() -> [LocalFeedImage] {
         self.map {
             LocalFeedImage(id: $0.id,
-                          description: $0.description,
-                          location: $0.location,
-                          imageURL: $0.imageURL)
+                           description: $0.description,
+                           location: $0.location,
+                           imageURL: $0.imageURL)
+        }
+    }
+}
+
+private extension Array where Element == LocalFeedImage {
+    func toModels() -> [FeedImage] {
+        self.map {
+            FeedImage(id: $0.id,
+                           description: $0.description,
+                           location: $0.location,
+                           imageURL: $0.imageURL)
         }
     }
 }
