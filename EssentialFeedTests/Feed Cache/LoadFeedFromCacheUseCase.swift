@@ -84,7 +84,19 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
-    func test_load_DoesNotDeleteCacheOnLessThanSevenDaysOldCache() {
+//    func test_load_DoesNotDeleteCacheOnLessThanSevenDaysOldCache() {
+//        let feed = uniqueImageFeed()
+//        let fixedCurrentDate = Date()
+//        let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: +1)
+//        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+//        
+//        sut.load { _ in }
+//        store.completeRetreival(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+//        
+//        XCTAssertEqual(store.receivedMessages, [.retrieve])
+//    }
+    
+    func test_load_hasNoSideOnLessThanSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: +1)
@@ -157,33 +169,5 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         }
         action()
         wait(for: [exp], timeout: 1.0 )
-    }
-    
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
-    }
-    
-    private func uniqueImageFeed() -> (models: [FeedImage], local:[LocalFeedImage] ) {
-        let items = [uniqueImage(), uniqueImage()]
-        let localItems = items.map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL) }
-        return (items, localItems)
-    }
-    
-    private func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    private func uniqueImage() -> FeedImage {
-        return FeedImage(id: UUID(), description: "any", location: "any", imageURL: anyURL())
-    }
-}
-
-private extension Date {
-    func adding(days: Int) -> Date {
-        Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
-    }
-    
-    func adding(seconds: TimeInterval) -> Date {
-        self + seconds
     }
 }
