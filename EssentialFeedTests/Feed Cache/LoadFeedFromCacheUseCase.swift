@@ -84,18 +84,6 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
-//    func test_load_DoesNotDeleteCacheOnLessThanSevenDaysOldCache() {
-//        let feed = uniqueImageFeed()
-//        let fixedCurrentDate = Date()
-//        let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: +1)
-//        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
-//        
-//        sut.load { _ in }
-//        store.completeRetreival(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
-//        
-//        XCTAssertEqual(store.receivedMessages, [.retrieve])
-//    }
-    
     func test_load_hasNoSideOnLessThanSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
@@ -108,7 +96,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
-    func test_load_DeleteCacheOnSevenDaysOldCache() {
+    func test_load_HasNoSideOnSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         let sevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7)
@@ -117,10 +105,10 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         sut.load { _ in }
         store.completeRetreival(with: feed.local, timestamp: sevenDaysOldTimestamp)
         
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
-    func test_load_DeleteCacheOnMoreThanSevenDaysOldCache() {
+    func test_load_HasNoSideOnOnMoreThanSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         let sevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(days: -1)
@@ -129,7 +117,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         sut.load { _ in }
         store.completeRetreival(with: feed.local, timestamp: sevenDaysOldTimestamp)
         
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     func test_load_doesNotDeliverResultAfterSUTIsntanceHasBeenDeallocated() {
