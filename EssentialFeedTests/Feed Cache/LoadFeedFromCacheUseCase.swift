@@ -34,7 +34,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let (sut, store) = makeSUT()
         
         expect(sut, toCompleteWithResult: .success([])) {
-            store.completeRetreivalWithEmptyCache()
+            store.completeRetrievalWithEmptyCache()
         }
     }
     
@@ -44,7 +44,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: +1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         expect(sut, toCompleteWithResult: .success(feed.models)) {
-            store.completeRetreival(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+            store.completeRetrieval(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
         }
     }
     
@@ -54,7 +54,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let sevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         expect(sut, toCompleteWithResult: .success([])) {
-            store.completeRetreival(with: feed.local, timestamp: sevenDaysOldTimestamp)
+            store.completeRetrieval(with: feed.local, timestamp: sevenDaysOldTimestamp)
         }
     }
     
@@ -64,7 +64,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let moreThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         expect(sut, toCompleteWithResult: .success([])) {
-            store.completeRetreival(with: feed.local, timestamp: moreThanSevenDaysOldTimestamp)
+            store.completeRetrieval(with: feed.local, timestamp: moreThanSevenDaysOldTimestamp)
         }
     }
     
@@ -79,7 +79,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
     func test_load_hasNoSideEffectsOnEmptyCache() {
         let (sut, store) = makeSUT()
         sut.load { _ in }
-        store.completeRetreivalWithEmptyCache()
+        store.completeRetrievalWithEmptyCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -91,7 +91,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         
         sut.load { _ in }
-        store.completeRetreival(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+        store.completeRetrieval(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -103,7 +103,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         
         sut.load { _ in }
-        store.completeRetreival(with: feed.local, timestamp: sevenDaysOldTimestamp)
+        store.completeRetrieval(with: feed.local, timestamp: sevenDaysOldTimestamp)
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -115,7 +115,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         
         sut.load { _ in }
-        store.completeRetreival(with: feed.local, timestamp: sevenDaysOldTimestamp)
+        store.completeRetrieval(with: feed.local, timestamp: sevenDaysOldTimestamp)
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -127,7 +127,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
         var receivedResults = [LocalFeedLoader.LoadResult]()
         sut?.load { receivedResults.append($0) }
         sut = nil
-        store.completeRetreivalWithEmptyCache()
+        store.completeRetrievalWithEmptyCache()
         
         XCTAssertTrue(receivedResults.isEmpty)
     }
