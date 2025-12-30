@@ -111,7 +111,7 @@ final class LoadFeedFromCacheUseCase: XCTestCase {
     func test_load_HasNoSideOnExpiredCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(days: -1)
+        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         
         sut.load { _ in }
