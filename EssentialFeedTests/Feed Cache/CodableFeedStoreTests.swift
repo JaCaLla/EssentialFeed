@@ -17,7 +17,7 @@ final class CodableFeedStoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-
+        
         setupEmptyStoreState()
     }
     
@@ -93,33 +93,59 @@ final class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_delete_hasNoSideEffectsOnEmptyCache() {
-            let sut = makeSUT()
-            
-            let deletionError = deleteCache(from: sut)
-            
-            XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
-            expect(sut, toRetrieve: .empty)
+        let sut = makeSUT()
+        
+        let deletionError = deleteCache(from: sut)
+        
+        XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+        expect(sut, toRetrieve: .empty)
+    }
+    
+    func test_delete_emptiesPreviouslyInsertedCache() {
+        let sut = makeSUT()
+        insert((uniqueImageFeed().local, Date()), to: sut)
+        
+        let deletionError = deleteCache(from: sut)
+        
+        XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
+        expect(sut, toRetrieve: .empty)
+    }
+    
+    func test_delete_deliversErrorOnDeletionError() {
+        let noDeletePermissionURL = cachesDirectory()
+        let sut = makeSUT(storeURL: noDeletePermissionURL)
+        
+        let deletionError = deleteCache(from: sut)
+        
+        XCTAssertNotNil(deletionError, "Expected cache deletion to fail")
+        expect(sut, toRetrieve: .empty)
+    }
+    
+    func test_storiesSideEffects_runSerially() {
+        let sut = makeSUT()
+        var completedOperatinsInOrder = [XCTestExpectation]()
+        
+        let op1 = expectation(description: "Operation 1")
+        sut.insert(uniqueImageFeed().local, timestamp: Date()) { _ in
+            completedOperatinsInOrder.append(op1)
+            op1.fulfill()
         }
         
-        func test_delete_emptiesPreviouslyInsertedCache() {
-            let sut = makeSUT()
-            insert((uniqueImageFeed().local, Date()), to: sut)
-            
-            let deletionError = deleteCache(from: sut)
-            
-            XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
-            expect(sut, toRetrieve: .empty)
+        let op2 = expectation(description: "Operation 2")
+        sut.deleteCachedFeed { _ in
+            completedOperatinsInOrder.append(op2)
+            op2.fulfill()
         }
         
-        func test_delete_deliversErrorOnDeletionError() {
-            let noDeletePermissionURL = cachesDirectory()
-            let sut = makeSUT(storeURL: noDeletePermissionURL)
-            
-            let deletionError = deleteCache(from: sut)
-            
-            XCTAssertNotNil(deletionError, "Expected cache deletion to fail")
-            expect(sut, toRetrieve: .empty)
+        let op3 = expectation(description: "Operation 3")
+        sut.insert(uniqueImageFeed().local, timestamp: Date()) { _ in
+            completedOperatinsInOrder.append(op3)
+            op3.fulfill()
         }
+        
+        wait(for: [op1, op2, op3], timeout: 1.0)
+        XCTAssertEqual(completedOperatinsInOrder, [op1, op2, op3])
+    }
     
     // - MARK: Helpers
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> FeedStore {
@@ -160,8 +186,6 @@ final class CodableFeedStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    
-    
     private func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line ) {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
@@ -177,7 +201,7 @@ final class CodableFeedStoreTests: XCTestCase {
                 XCTAssertEqual(retrieved.timestamp, expected.timestamp, file: file, line: line)
             default:
                 XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead.")
-
+                
             }
             exp.fulfill()
         }
@@ -187,7 +211,7 @@ final class CodableFeedStoreTests: XCTestCase {
     private func testSpecificStoreURL() -> URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
     }
-
+    
     private func tearDownEmptyStoreState() {
         deleteStoreArtifacts()
     }
@@ -201,6 +225,6 @@ final class CodableFeedStoreTests: XCTestCase {
     }
     
     private func cachesDirectory() -> URL {
-            return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
 }
