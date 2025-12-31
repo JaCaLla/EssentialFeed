@@ -9,11 +9,9 @@ import XCTest
 import EssentialFeed
  
 extension FeedStoreSpecs where Self: XCTestCase {
-    // - MARK: Helpers
-    func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> FeedStore {
-        let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
-        trackForMemoryLeaks(sut, file: file, line: line)
-        return sut
+    
+    func  assertThatRetrieveDeliversEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, toRetrieve: .empty)
     }
     
     @discardableResult
@@ -68,25 +66,5 @@ extension FeedStoreSpecs where Self: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    func testSpecificStoreURL() -> URL {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
-    }
-    
-    func tearDownEmptyStoreState() {
-        deleteStoreArtifacts()
-    }
-    
-    func setupEmptyStoreState() {
-        deleteStoreArtifacts()
-    }
-    
-    func deleteStoreArtifacts() {
-        try? FileManager.default.removeItem(at: testSpecificStoreURL())
-    }
-    
-    func cachesDirectory() -> URL {
-        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
 }

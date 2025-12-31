@@ -25,7 +25,7 @@ final class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs  {
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
         
-        expect(sut, toRetrieve: .empty)
+        assertThatRetrieveDeliversEmptyCache(on: sut)
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
@@ -157,5 +157,32 @@ final class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs  {
         
         wait(for: [op1, op2, op3], timeout: 1.0)
         XCTAssertEqual(completedOperatinsInOrder, [op1, op2, op3])
+    }
+    
+    // MARK:- Helpers
+    func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> FeedStore {
+        let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    func testSpecificStoreURL() -> URL {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
+    }
+    
+    func tearDownEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+    
+    func setupEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+    
+    func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+    }
+    
+    func cachesDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
 }
