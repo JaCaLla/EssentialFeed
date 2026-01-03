@@ -76,8 +76,6 @@ final class EssentialFeedIntegrationTests: XCTestCase {
                 XCTAssertEqual(imageFeed, expectedFeed, "Expected \(expectedFeed), but received \(imageFeed) ", file: file, line: line)
             case let .failure(error):
                 XCTFail("Expected successful feed result, got \(error) instead", file: file, line: line)
-            @unknown default:
-                <#fatalError()#>
             }
             exp.fulfill()
         }
