@@ -82,7 +82,7 @@ Given the customer doesn't have connectivity
 4. System creates image feed from cached data.
 5. System delivers image feed.
 
-#### Retreival error course (sad path):
+#### Retrieval error course (sad path):
 1. System delivers error.
 
 #### Expired cache course (sad path): 
@@ -112,7 +112,7 @@ Given the customer doesn't have connectivity
 - Image Feed
 
 #### Primary course (happy path):
-1. Execute "Save Image Feed Items" command with above data.
+1. Execute "Save Image Feed" command with above data.
 2. System deletes old cache data.
 3. System encodes image feed.
 4. System timestamps the new cache.
@@ -143,7 +143,7 @@ Given the customer doesn't have connectivity
 | `id`          | `UUID`              |
 | `description` | `String` (optional) |
 | `location`    | `String` (optional) |
-| `url`         | `URL`               |
+| `url`	        | `URL`               |
 
 ### Payload contract
 
