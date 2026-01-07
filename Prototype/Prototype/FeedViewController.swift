@@ -1,9 +1,5 @@
 //
-//  FeedViewController.swift
-//  Prototype
-//
-//  Created by JAVIER CALATRAVA LLAVERIA on 7/1/26.
-//  Copyright © 2026 Essential Developer. All rights reserved.
+//  Copyright © 2019 Essential Developer. All rights reserved.
 //
 
 import UIKit
@@ -38,6 +34,6 @@ extension FeedImageCell {
 		descriptionLabel.text = model.description
 		descriptionLabel.isHidden = model.description == nil
 		
-		feedImageView.image = UIImage(named: model.imageName)
+		fadeIn(UIImage(named: model.imageName))
 	}
 }
