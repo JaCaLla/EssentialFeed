@@ -1,22 +1,19 @@
 //
-//  FeedViewController.swift
-//  EssentialFeed
+//  Copyright © 2019 Essential Developer. All rights reserved.
 //
-//  Created by JAVIER CALATRAVA LLAVERIA on 9/1/26.
-//  Copyright © 2026 Essential Developer. All rights reserved.
-//
+
 import UIKit
 import EssentialFeed
 
-public final class FeedViewController: UITableViewController {
+final public class FeedViewController: UITableViewController {
 	private var loader: FeedLoader?
 	
 	public convenience init(loader: FeedLoader) {
 		self.init()
 		self.loader = loader
 	}
-
-    public override func viewDidLoad() {
+	
+	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		refreshControl = UIRefreshControl()

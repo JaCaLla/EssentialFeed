@@ -60,7 +60,7 @@ final class FeedViewControllerTests: XCTestCase {
 			completions.append(completion)
 		}
 		
-        func completeFeedLoading(at index: Int) {
+		func completeFeedLoading(at index: Int) {
 			completions[index](.success([]))
 		}
 	}
