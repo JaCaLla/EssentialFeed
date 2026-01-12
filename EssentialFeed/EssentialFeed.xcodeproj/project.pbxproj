@@ -53,6 +53,7 @@
 		08DDC13A21BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DDC13921BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		08E5941522523FCC00E2D213 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E5941422523FCC00E2D213 /* FeedCachePolicy.swift */; };
 		5A015CA22F1238DC00D6DD64 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A015CA12F1238DC00D6DD64 /* FeedImageCell.swift */; };
+		5A015CA42F1579BD00D6DD64 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A015CA32F1579BD00D6DD64 /* UIView+Shimmering.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		08DDC13921BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		08E5941422523FCC00E2D213 /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		5A015CA12F1238DC00D6DD64 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
+		5A015CA32F1579BD00D6DD64 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 			children = (
 				08D917A322B92A5D003BC31B /* Info.plist */,
 				5A015CA12F1238DC00D6DD64 /* FeedImageCell.swift */,
+				5A015CA32F1579BD00D6DD64 /* UIView+Shimmering.swift */,
 				08BB7EAA22C1425100F8B83C /* FeedViewController.swift */,
 			);
 			path = EssentialFeediOS;
@@ -688,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A015CA42F1579BD00D6DD64 /* UIView+Shimmering.swift in Sources */,
 				08BB7EAB22C1425100F8B83C /* FeedViewController.swift in Sources */,
 				5A015CA22F1238DC00D6DD64 /* FeedImageCell.swift in Sources */,
 			);
