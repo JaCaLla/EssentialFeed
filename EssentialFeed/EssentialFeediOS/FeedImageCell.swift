@@ -1,9 +1,5 @@
 //
-//  FeedImageCell.swift
-//  EssentialFeediOS
-//
-//  Created by JAVIER CALATRAVA LLAVERIA on 10/1/26.
-//  Copyright © 2026 Essential Developer. All rights reserved.
+//  Copyright © 2019 Essential Developer. All rights reserved.
 //
 
 import UIKit

@@ -142,7 +142,8 @@ final class FeedViewControllerTests: XCTestCase {
 		return FeedImage(id: UUID(), description: description, location: location, url: url)
 	}
 
-    class LoaderSpy: FeedLoader, FeedImageDataLoader {
+	class LoaderSpy: FeedLoader, FeedImageDataLoader {
+		
 		// MARK: - FeedLoader
 
 		private var feedRequests = [(FeedLoader.Result) -> Void]()
@@ -166,15 +167,19 @@ final class FeedViewControllerTests: XCTestCase {
 		
 		// MARK: - FeedImageDataLoader
 
+		private struct TaskSpy: FeedImageDataLoaderTask {
+			let cancelCallback: () -> Void
+			func cancel() {
+				cancelCallback()
+			}
+		}
+
 		private(set) var loadedImageURLs = [URL]()
 		private(set) var cancelledImageURLs = [URL]()
 
-		func loadImageData(from url: URL) {
+		func loadImageData(from url: URL) -> FeedImageDataLoaderTask {
 			loadedImageURLs.append(url)
-		}
-		
-		func cancelImageDataLoad(from url: URL) {
-			cancelledImageURLs.append(url)
+			return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
 		}
 	}
 
@@ -187,15 +192,16 @@ private extension FeedViewController {
 	
 	@discardableResult
 	func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
-        return feedImageView(at: index) as? FeedImageCell
+		return feedImageView(at: index) as? FeedImageCell
 	}
-    
-    func simulateFeedImageViewNotVisible(at row: Int) {
-        let view = simulateFeedImageViewVisible(at: row)
-        let delegate = tableView.delegate
-        let index = IndexPath(row: row, section: feedImagesSection)
-        delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
-    }
+	
+	func simulateFeedImageViewNotVisible(at row: Int) {
+		let view = simulateFeedImageViewVisible(at: row)
+		
+		let delegate = tableView.delegate
+		let index = IndexPath(row: row, section: feedImagesSection)
+		delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
+	}
 	
 	var isShowingLoadingIndicator: Bool {
 		return refreshControl?.isRefreshing == true
