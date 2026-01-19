@@ -6,8 +6,7 @@
 //  Copyright © 2026 Essential Developer. All rights reserved.
 //
 
-
-import UIKit
+import Foundation
 import EssentialFeed
 
 final class FeedViewModel {
@@ -17,7 +16,6 @@ final class FeedViewModel {
         self.feedLoader = feedLoader
     }
     
-    // En lugar de un callback aquí podriamos utilizar RxSwift o Combine
     var onLoadingStateChange: Observer<Bool>?
     var onFeedLoad: Observer<[FeedImage]>?
     
