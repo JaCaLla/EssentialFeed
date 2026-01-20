@@ -60,7 +60,6 @@
 		5ADBFBD22F16D37200A0E846 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD12F16D37200A0E846 /* FeedRefreshViewController.swift */; };
 		5ADBFBD42F18047700A0E846 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD32F18047700A0E846 /* FeedImageDataLoader.swift */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
-		5AF417C02F1CCDD000B1251B /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF417BF2F1CCDD000B1251B /* FeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,7 +149,6 @@
 		5ADBFBD12F16D37200A0E846 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		5ADBFBD32F18047700A0E846 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
-		5AF417BF2F1CCDD000B1251B /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,7 +430,6 @@
 			children = (
 				5AA891A02F1EA1910005F732 /* FeedImageViewModel.swift */,
 				5AA891A42F1FE9AC0005F732 /* FeedPresenter.swift */,
-				5AF417BF2F1CCDD000B1251B /* FeedViewModel.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -776,7 +773,6 @@
 				5A015CA22F1238DC00D6DD64 /* FeedImageCell.swift in Sources */,
 				5AA891A12F1EA1910005F732 /* FeedImageViewModel.swift in Sources */,
 				5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */,
-				5AF417C02F1CCDD000B1251B /* FeedViewModel.swift in Sources */,
 				5A73C7F92F1A6AF000CAD73E /* FeedUIComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
