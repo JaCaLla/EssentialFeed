@@ -11,7 +11,7 @@ import UIKit
 //import EssentialFeed
 
 final class FeedRefreshViewController: NSObject, FeedLoadingView {
-    
+        
     private(set) lazy var view: UIRefreshControl = loadView()
     
     private let presenter: FeedPresenter
@@ -30,8 +30,8 @@ final class FeedRefreshViewController: NSObject, FeedLoadingView {
     }
     
     // MARK: - FeedLoadingView
-    func display(isLoading: Bool) {
-        if isLoading {
+    func display(_ viewModel: FeedLoaderViewModel) {
+        if viewModel.isLoading {
             view.beginRefreshing()
         } else {
             view.endRefreshing()
