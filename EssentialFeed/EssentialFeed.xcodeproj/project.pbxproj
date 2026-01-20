@@ -56,6 +56,7 @@
 		5A015CA42F1579BD00D6DD64 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A015CA32F1579BD00D6DD64 /* UIView+Shimmering.swift */; };
 		5A73C7F92F1A6AF000CAD73E /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73C7F82F1A6AF000CAD73E /* FeedUIComposer.swift */; };
 		5AA891A12F1EA1910005F732 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891A02F1EA1910005F732 /* FeedImageViewModel.swift */; };
+		5AA891A52F1FE9AC0005F732 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891A42F1FE9AC0005F732 /* FeedPresenter.swift */; };
 		5ADBFBD22F16D37200A0E846 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD12F16D37200A0E846 /* FeedRefreshViewController.swift */; };
 		5ADBFBD42F18047700A0E846 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD32F18047700A0E846 /* FeedImageDataLoader.swift */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
@@ -145,6 +146,7 @@
 		5A015CA32F1579BD00D6DD64 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		5A73C7F82F1A6AF000CAD73E /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		5AA891A02F1EA1910005F732 /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
+		5AA891A42F1FE9AC0005F732 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		5ADBFBD12F16D37200A0E846 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		5ADBFBD32F18047700A0E846 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,8 @@
 		08D917A122B92A5D003BC31B /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				5AA891A22F1FE7A50005F732 /* Feed Image Loader */,
+				5AA891A32F1FE7B50005F732 /* Feed Presentation */,
 				5ADBFBCF2F16CED000A0E846 /* Feed UI */,
 				08D917A322B92A5D003BC31B /* Info.plist */,
 			);
@@ -416,6 +420,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5AA891A22F1FE7A50005F732 /* Feed Image Loader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Feed Image Loader";
+			sourceTree = "<group>";
+		};
+		5AA891A32F1FE7B50005F732 /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5AA891A02F1EA1910005F732 /* FeedImageViewModel.swift */,
+				5AA891A42F1FE9AC0005F732 /* FeedPresenter.swift */,
+				5AF417BF2F1CCDD000B1251B /* FeedViewModel.swift */,
+			);
+			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
 		5ADBFBCF2F16CED000A0E846 /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,8 +462,6 @@
 		5AF417BE2F1CCDB100B1251B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5AA891A02F1EA1910005F732 /* FeedImageViewModel.swift */,
-				5AF417BF2F1CCDD000B1251B /* FeedViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -749,6 +768,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA891A52F1FE9AC0005F732 /* FeedPresenter.swift in Sources */,
 				5ADBFBD42F18047700A0E846 /* FeedImageDataLoader.swift in Sources */,
 				5ADBFBD22F16D37200A0E846 /* FeedRefreshViewController.swift in Sources */,
 				5A015CA42F1579BD00D6DD64 /* UIView+Shimmering.swift in Sources */,

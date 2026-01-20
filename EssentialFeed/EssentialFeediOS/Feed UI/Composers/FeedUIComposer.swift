@@ -13,10 +13,12 @@ import EssentialFeed
 public final class FeedUIComposer {
     private init() {}
     public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
-        let feedViewModel = FeedViewModel(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(viewModel: feedViewModel)
+        let presenter = FeedPresenter(feedLoader: feedLoader)
+        let refreshController = FeedRefreshViewController(presenter: presenter)
         let feedController = FeedViewController(refreshController: refreshController)
-        feedViewModel.onFeedLoad = adaptFeedToCellControllers(forwardingTo: feedController, loader: imageLoader)
+        
+        presenter.loaindingView = WeakRefVirtualProxy(refreshController)
+        presenter.feedView = FeedViewAdapter(controller: feedController, iamgeLoader: imageLoader)
         
         return feedController
     }
@@ -27,6 +29,40 @@ public final class FeedUIComposer {
 				FeedImageCellController(viewModel:
 					FeedImageViewModel(model: model, imageLoader: loader, imageTransformer: UIImage.init))
             }
+        }
+    }
+}
+
+private final class WeakRefVirtualProxy<T: AnyObject> {
+    private weak var object: T?
+    
+    init(_ object: T) {
+        self.object = object
+    }
+}
+
+extension WeakRefVirtualProxy: FeedLoadingView where T: FeedLoadingView {
+    func display(isLoading: Bool) {
+        object?.display(isLoading: isLoading)
+    }
+    
+    
+}
+
+private final class FeedViewAdapter: FeedView {
+    
+    private weak var controller: FeedViewController?
+    private let iamgeLoader: FeedImageDataLoader
+    
+    init(controller: FeedViewController? = nil, iamgeLoader: FeedImageDataLoader) {
+        self.controller = controller
+        self.iamgeLoader = iamgeLoader
+    }
+    
+    func display(feed: [EssentialFeed.FeedImage]) {
+        controller?.tableModel = feed.map { model in
+            FeedImageCellController(viewModel:
+                FeedImageViewModel(model: model, imageLoader: iamgeLoader, imageTransformer: UIImage.init))
         }
     }
 }

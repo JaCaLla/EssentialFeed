@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import EssentialFeed
+//import EssentialFeed
 
 public protocol FeedImageDataLoaderTask {
 	func cancel()
