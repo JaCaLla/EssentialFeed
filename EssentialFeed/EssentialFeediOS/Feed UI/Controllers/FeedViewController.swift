@@ -3,49 +3,51 @@
 //
 
 import UIKit
-//import EssentialFeed
-
-public protocol FeedImageDataLoaderTask {
-	func cancel()
-}
 
 protocol FeedViewControllerDelegate {
-    func didRequestFeedRefresh()
+	func didRequestFeedRefresh()
 }
 
-final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
-    //@IBOutlet var refreshController: FeedRefreshViewController?
-    var delegate: FeedViewControllerDelegate?
-
-    var tableModel = [FeedImageCellController]() {
-        didSet { tableView.reloadData() }
-    }
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+	var delegate: FeedViewControllerDelegate?
+	
+	var tableModel = [FeedImageCellController]() {
+		didSet { tableView.reloadData() }
+	}
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-
-		//tableView.prefetchDataSource = self
-        refresh()
+		
+		refresh()
 	}
 	
 	@IBAction private func refresh() {
 		delegate?.didRequestFeedRefresh()
 	}
+	
+	func display(_ viewModel: FeedLoadingViewModel) {
+		if viewModel.isLoading {
+			refreshControl?.beginRefreshing()
+		} else {
+			refreshControl?.endRefreshing()
+		}
+	}
+
 	public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tableModel.count
 	}
-	    
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellController(indexPath).view()
+	
+	public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return cellController(forRowAt: indexPath).view(in: tableView)
 	}
 	
 	public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cancelCellControllerLoad(forRowAt: indexPath)
+		cancelCellControllerLoad(forRowAt: indexPath)
 	}
 	
 	public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 		indexPaths.forEach { indexPath in
-            _ = cellController(indexPath).preload()
+			cellController(forRowAt: indexPath).preload()
 		}
 	}
 	
@@ -53,20 +55,11 @@ final public class FeedViewController: UITableViewController, UITableViewDataSou
 		indexPaths.forEach(cancelCellControllerLoad)
 	}
 	
-	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
-        cellController(indexPath).cancelLoad()
+	private func cellController(forRowAt indexPath: IndexPath) -> FeedImageCellController {
+		return tableModel[indexPath.row]
 	}
-    
-    private func cellController(_ indexPath: IndexPath) -> FeedImageCellController {
-        tableModel[indexPath.row]
-    }
-    
-    // MARK: - FeedLoadingView
-    func display(_ viewModel: FeedLoaderViewModel) {
-        if viewModel.isLoading {
-            refreshControl?.beginRefreshing()
-        } else {
-            refreshControl?.endRefreshing()
-        }
-    }
+	
+	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
+		cellController(forRowAt: indexPath).cancelLoad()
+	}
 }
