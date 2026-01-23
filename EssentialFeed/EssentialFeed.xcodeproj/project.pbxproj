@@ -73,8 +73,8 @@
 		5AA891CE2F239B4B0005F732 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891C92F239B4B0005F732 /* UIButton+TestHelpers.swift */; };
 		5AA891CF2F239B4B0005F732 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891CB2F239B4B0005F732 /* UIImage+TestHelpers.swift */; };
 		5AA891D02F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891CC2F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift */; };
-		5AA891D22F23B6D90005F732 /* Feed.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA891D12F23B6D90005F732 /* Feed.xcstrings */; };
 		5AA891D42F23E8CF0005F732 /* FeedViewControllerTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891D32F23E8CF0005F732 /* FeedViewControllerTests+Localization.swift */; };
+		5AA891D72F23EAA70005F732 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA891D52F23EAA70005F732 /* Feed.strings */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,8 +178,9 @@
 		5AA891CA2F239B4B0005F732 /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		5AA891CB2F239B4B0005F732 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		5AA891CC2F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
-		5AA891D12F23B6D90005F732 /* Feed.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Feed.xcstrings; sourceTree = "<group>"; };
 		5AA891D32F23E8CF0005F732 /* FeedViewControllerTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Localization.swift"; sourceTree = "<group>"; };
+		5AA891D62F23EAA70005F732 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
+		5AA891D82F23EB920005F732 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -466,7 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA891AC2F23976D0005F732 /* FeedImagePresenter.swift */,
-				5AA891D12F23B6D90005F732 /* Feed.xcstrings */,
+				5AA891D52F23EAA70005F732 /* Feed.strings */,
 				5AA891AD2F23976D0005F732 /* FeedImageViewModel.swift */,
 				5AA891AE2F23976D0005F732 /* FeedLoadingViewModel.swift */,
 				5AA891AF2F23976D0005F732 /* FeedPresenter.swift */,
@@ -698,6 +699,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 080EDEE721B6DA7E00813479;
 			productRefGroup = 080EDEF221B6DA7E00813479 /* Products */;
@@ -747,7 +749,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AA891D22F23B6D90005F732 /* Feed.xcstrings in Resources */,
+				5AA891D72F23EAA70005F732 /* Feed.strings in Resources */,
 				5AA891A72F2378D00005F732 /* Feed.storyboard in Resources */,
 				5AA891A92F237AB80005F732 /* Feed.xcassets in Resources */,
 			);
@@ -891,11 +893,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		5AA891D52F23EAA70005F732 /* Feed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AA891D62F23EAA70005F732 /* en */,
+				5AA891D82F23EB920005F732 /* pt-BR */,
+			);
+			name = Feed.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		080EDF0321B6DA7E00813479 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -961,6 +976,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
