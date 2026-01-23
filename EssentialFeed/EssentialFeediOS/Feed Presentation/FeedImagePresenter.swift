@@ -19,6 +19,10 @@ final class FeedImagePresenter<View: FeedImageView, Image> where View.Image == I
 		self.view = view
 		self.imageTransformer = imageTransformer
 	}
+    
+    static var tilte: String {
+        NSLocalizedString("FEED_VIEW_TITLE", tableName: "Feed", bundle: Bundle(for: FeedPresenter.self), comment: "Title for the feed View")
+    }
 	
 	func didStartLoadingImageData(for model: FeedImage) {
 		view.display(FeedImageViewModel(

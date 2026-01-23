@@ -73,6 +73,7 @@
 		5AA891CE2F239B4B0005F732 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891C92F239B4B0005F732 /* UIButton+TestHelpers.swift */; };
 		5AA891CF2F239B4B0005F732 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891CB2F239B4B0005F732 /* UIImage+TestHelpers.swift */; };
 		5AA891D02F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891CC2F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift */; };
+		5AA891D22F23B6D90005F732 /* Feed.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA891D12F23B6D90005F732 /* Feed.xcstrings */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		5AA891CA2F239B4B0005F732 /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		5AA891CB2F239B4B0005F732 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		5AA891CC2F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		5AA891D12F23B6D90005F732 /* Feed.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Feed.xcstrings; sourceTree = "<group>"; };
 		5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -463,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA891AC2F23976D0005F732 /* FeedImagePresenter.swift */,
+				5AA891D12F23B6D90005F732 /* Feed.xcstrings */,
 				5AA891AD2F23976D0005F732 /* FeedImageViewModel.swift */,
 				5AA891AE2F23976D0005F732 /* FeedLoadingViewModel.swift */,
 				5AA891AF2F23976D0005F732 /* FeedPresenter.swift */,
@@ -749,6 +752,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA891D22F23B6D90005F732 /* Feed.xcstrings in Resources */,
 				5AA891A72F2378D00005F732 /* Feed.storyboard in Resources */,
 				5AA891A92F237AB80005F732 /* Feed.xcassets in Resources */,
 			);
@@ -950,6 +954,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1007,6 +1012,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
