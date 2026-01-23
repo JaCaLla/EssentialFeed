@@ -13,17 +13,11 @@ public protocol FeedImageDataLoaderTask {
 
 final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     var refreshController: FeedRefreshViewController?
-//	private var imageLoader: FeedImageDataLoader?
+
     var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
- //   var cellControllers = [IndexPath: FeedImageCellController]()
 
-    convenience init(refreshController: FeedRefreshViewController) {
-        self.init()
-        self.refreshController = refreshController
-    }
-    
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
