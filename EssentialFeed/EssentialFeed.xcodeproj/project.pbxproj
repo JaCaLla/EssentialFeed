@@ -76,6 +76,7 @@
 		5AA891D42F23E8CF0005F732 /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891D32F23E8CF0005F732 /* FeedUIIntegrationTests+Localization.swift */; };
 		5AA891D72F23EAA70005F732 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA891D52F23EAA70005F732 /* Feed.strings */; };
 		5AA891DC2F23EDE80005F732 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */; };
+		5AA891DE2F24B2340005F732 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891DD2F24B2340005F732 /* MainQueueDispatchDecorator.swift */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +185,7 @@
 		5AA891D82F23EB920005F732 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		5AA891D92F23EBEB0005F732 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
+		5AA891DD2F24B2340005F732 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -442,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				5A73C7F82F1A6AF000CAD73E /* FeedUIComposer.swift */,
+				5AA891DD2F24B2340005F732 /* MainQueueDispatchDecorator.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				5AA891B32F23976D0005F732 /* FeedLoadingViewModel.swift in Sources */,
 				5AA891B42F23976D0005F732 /* FeedViewModel.swift in Sources */,
 				5AA891B82F2399310005F732 /* UITableView+Dequeueing.swift in Sources */,
+				5AA891DE2F24B2340005F732 /* MainQueueDispatchDecorator.swift in Sources */,
 				5AA891BB2F2399620005F732 /* FeedImageDataLoader.swift in Sources */,
 				5AA891B92F2399310005F732 /* UIImageView+Animations.swift in Sources */,
 				5AA891B52F23976D0005F732 /* FeedImageViewModel.swift in Sources */,
