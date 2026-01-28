@@ -1,9 +1,9 @@
+////
+////  Copyright © 2019 Essential Developer. All rights reserved.
+////
 //
-//  Copyright © 2019 Essential Developer. All rights reserved.
+//import EssentialFeed
 //
-
-import EssentialFeed
-
-struct FeedViewModel {
-	let feed: [FeedImage]
-}
+//struct FeedViewModel {
+//	let feed: [FeedImage]
+//}
