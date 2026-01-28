@@ -71,7 +71,6 @@
 		5AA891D02F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891CC2F239B4B0005F732 /* UIRefreshControl+TestHelpers.swift */; };
 		5AA891D42F23E8CF0005F732 /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891D32F23E8CF0005F732 /* FeedUIIntegrationTests+Localization.swift */; };
 		5AA891D72F23EAA70005F732 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AA891D52F23EAA70005F732 /* Feed.strings */; };
-		5AA891DC2F23EDE80005F732 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */; };
 		5AA891DE2F24B2340005F732 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891DD2F24B2340005F732 /* MainQueueDispatchDecorator.swift */; };
 		5AB7F08F2F2A7D1C004AE5A6 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7F08E2F2A7D1C004AE5A6 /* FeedPresenter.swift */; };
 		5AB7F0902F2A7EDD004AE5A6 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD040C02F2A780F005B89C0 /* Feed.strings */; };
@@ -89,6 +88,7 @@
 		5AB7F0AF2F2A8A18004AE5A6 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7F0AC2F2A8A18004AE5A6 /* UITableView+Dequeueing.swift */; };
 		5AB7F0B02F2A8A18004AE5A6 /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7F0AB2F2A8A18004AE5A6 /* UIRefreshControl+Helpers.swift */; };
 		5AB7F0B12F2A8A18004AE5A6 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7F0AD2F2A8A18004AE5A6 /* UIView+Shimmering.swift */; };
+		5AB7F0B22F2AA2BF004AE5A6 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */; };
 		5ADBFBD62F180CE800A0E846 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBFBD52F180CB600A0E846 /* FeedImageCellController.swift */; };
 /* End PBXBuildFile section */
 
@@ -461,7 +461,6 @@
 		08D917AC22B92A5D003BC31B /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				5AA891DA2F23EDC80005F732 /* Feed Presentation */,
 				5AA891BF2F2399E00005F732 /* Feed UI */,
 				08D917AF22B92A5D003BC31B /* Info.plist */,
 			);
@@ -472,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				5A306C142F2918D1008F76B3 /* FeedPresenterTests.swift */,
+				5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -553,14 +553,6 @@
 				5AA891BD2F2399B90005F732 /* Controllers */,
 			);
 			path = "Feed UI";
-			sourceTree = "<group>";
-		};
-		5AA891DA2F23EDC80005F732 /* Feed Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				5AA891DB2F23EDE80005F732 /* FeedLocalizationTests.swift */,
-			);
-			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		5AB7F08D2F2A7CA2004AE5A6 /* Feed Presentation */ = {
@@ -880,6 +872,7 @@
 				5A306C152F2918D1008F76B3 /* FeedPresenterTests.swift in Sources */,
 				08DDC13A21BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				087546922272381700542C32 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
+				5AB7F0B22F2AA2BF004AE5A6 /* FeedLocalizationTests.swift in Sources */,
 				082DB86421F763F900A71F69 /* URLSessionHTTPClientTests.swift in Sources */,
 				086BE4842232725E004CDC26 /* FeedStoreSpy.swift in Sources */,
 				081C0DB322491EEF00AC754E /* SharedTestHelpers.swift in Sources */,
@@ -947,7 +940,6 @@
 			files = (
 				5AA891C42F239A530005F732 /* FeedViewController+TestHelpers.swift in Sources */,
 				5AA891C52F239A530005F732 /* FeedUIIntegrationTests+Assertions.swift in Sources */,
-				5AA891DC2F23EDE80005F732 /* FeedLocalizationTests.swift in Sources */,
 				5AA891C62F239A530005F732 /* FeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				5AA891C72F239A530005F732 /* FeedImageCell+TestHelpers.swift in Sources */,
 				08BB7EA622C1347800F8B83C /* FeedUIIntegrationTests.swift in Sources */,
