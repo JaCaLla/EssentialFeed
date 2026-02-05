@@ -5,6 +5,7 @@
 import XCTest
 import EssentialFeed
 
+@available(iOS 13.0, *)
 class URLSessionHTTPClientTests: XCTestCase {
 	
 	override func tearDown() {

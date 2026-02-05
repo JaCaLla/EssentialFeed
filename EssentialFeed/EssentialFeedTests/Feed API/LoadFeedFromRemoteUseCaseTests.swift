@@ -5,6 +5,7 @@
 import XCTest
 import EssentialFeed
 
+@available(iOS 13.0, *)
 class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 	
 	func test_init_doesNotRequestDataFromURL() {

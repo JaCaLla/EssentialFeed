@@ -5,6 +5,7 @@
 import XCTest
 import EssentialFeed
 
+@available(iOS 13.0, *)
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
 	
 	func test_retrieve_deliversEmptyOnEmptyCache() {
