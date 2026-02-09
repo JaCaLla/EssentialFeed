@@ -5,13 +5,21 @@
 import UIKit
 import EssentialFeed
 import EssentialFeediOS
-import Foundation
-import CoreData
+//import Foundation
+//import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	var window: UIWindow?
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+                let remoteURL = URL(string: "https://any-url.com/rss")!
+                let remoteClient = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+                let remoteFeedLoader = RemoteFeedLoader(url: remoteURL, client: remoteClient)
+                let remoteImageLoader = RemoteFeedImageDataLoader(client: remoteClient)
+        
+        window?.rootViewController = FeedUIComposer.feedComposedWith(feedLoader: remoteFeedLoader, imageLoader: remoteImageLoader)
+        
 //		guard let _ = (scene as? UIWindowScene) else { return }
 //        
 //        let remoteURL = URL(string: "https://any-url.com/rss")!
