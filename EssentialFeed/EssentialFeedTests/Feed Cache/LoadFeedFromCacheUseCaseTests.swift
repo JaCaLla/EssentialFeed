@@ -5,6 +5,7 @@
 import XCTest
 import EssentialFeed
 
+@available(iOS 13.0, *)
 class LoadFeedFromCacheUseCaseTests: XCTestCase {
 	
 	func test_init_doesNotMessageStoreUponCreation() {
