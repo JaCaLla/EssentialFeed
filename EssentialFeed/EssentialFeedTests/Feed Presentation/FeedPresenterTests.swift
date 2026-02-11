@@ -5,7 +5,6 @@
 import XCTest
 import EssentialFeed
 
-@available(iOS 13.0, *)
 class FeedPresenterTests: XCTestCase {
 
 	func test_title_isLocalized() {

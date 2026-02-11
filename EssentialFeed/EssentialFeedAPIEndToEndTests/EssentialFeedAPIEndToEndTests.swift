@@ -5,7 +5,6 @@
 import XCTest
 import EssentialFeed
 
-@available(iOS 13.0, *)
 class EssentialFeedAPIEndToEndTests: XCTestCase {
 
 	func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
