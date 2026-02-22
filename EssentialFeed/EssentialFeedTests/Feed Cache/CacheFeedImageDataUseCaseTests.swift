@@ -5,7 +5,6 @@
 import XCTest
 import EssentialFeed
 
-@available(iOS 13.0, *)
 class CacheFeedImageDataUseCaseTests: XCTestCase {
 	
 	func test_init_doesNotMessageStoreUponCreation() {
@@ -69,7 +68,7 @@ class CacheFeedImageDataUseCaseTests: XCTestCase {
 	}
 
 	private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: LocalFeedImageDataLoader.SaveResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-		let exp = expectation(description: "Wait for load completion")
+		let exp = expectation(description: "Wait for save completion")
 		
 		sut.save(anyData(), for: anyURL()) { receivedResult in
 			switch (receivedResult, expectedResult) {

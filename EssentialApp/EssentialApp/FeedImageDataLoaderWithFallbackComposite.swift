@@ -4,6 +4,7 @@
 
 import Foundation
 import EssentialFeed
+import Combine
 
 public class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
 	private let primary: FeedImageDataLoader

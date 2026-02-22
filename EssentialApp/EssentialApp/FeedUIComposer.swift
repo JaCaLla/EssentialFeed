@@ -1,7 +1,7 @@
 //
 //  Copyright © 2019 Essential Developer. All rights reserved.
 //
-
+import Combine
 import UIKit
 import EssentialFeed
 import EssentialFeediOS
@@ -9,9 +9,8 @@ import EssentialFeediOS
 public final class FeedUIComposer {
 	private init() {}
 	
-	public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
-		let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader:
-			MainQueueDispatchDecorator(decoratee: feedLoader))
+    public static func feedComposedWith(feedLoader: @escaping () -> FeedLoader.Publisher, imageLoader: FeedImageDataLoader) -> FeedViewController {
+        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: feedLoader)
 		
 		let feedController = makeFeedViewController(
 			delegate: presentationAdapter,
@@ -36,3 +35,4 @@ public final class FeedUIComposer {
 		return feedController
 	}
 }
+

@@ -5,7 +5,6 @@
 import XCTest
 import EssentialFeed
 
-@available(iOS 13.0, *)
 class FeedImagePresenterTests: XCTestCase {
 	
 	func test_init_doesNotSendMessagesToView() {

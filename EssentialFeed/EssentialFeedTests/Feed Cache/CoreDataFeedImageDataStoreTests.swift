@@ -5,7 +5,6 @@
 import XCTest
 import EssentialFeed
 
-@available(iOS 13.0, *)
 class CoreDataFeedImageDataStoreTests: XCTestCase {
 	
 	func test_retrieveImageData_deliversNotFoundWhenEmpty() {
