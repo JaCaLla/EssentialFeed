@@ -79,53 +79,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-public extension FeedImageDataLoader {
-    typealias Publisher = AnyPublisher<Data, Error>
-    func loadImageDataPublisher(from url: URL) -> Publisher {
-        var task: FeedImageDataLoaderTask?
-        return Deferred {
-            Future { completion in
-                task = self.loadImageData(from: url, completion: completion)
-            }
-        }
-        .handleEvents(receiveCancel:  { task?.cancel() })
-        .eraseToAnyPublisher()
-    }
-}
-
-extension Publisher where Output == Data {
-    func caching(to cache: FeedImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
-        handleEvents(receiveOutput: { data in
-            cache.saveIngoringResult(data, for: url)
-        }).eraseToAnyPublisher()
-    }
-}
 
 private extension FeedImageDataCache {
     func saveIngoringResult(_ data: Data, for url: URL) {
         save(data, for: url) { _ in }
-    }
-}
-
-public extension FeedLoader {
-    typealias Publisher = AnyPublisher<[FeedImage], Error>
-    func loadPublisher() -> Publisher {
-        return Deferred {
-            Future(self.load)
-        }.eraseToAnyPublisher()
-    }
-}
-
-extension Publisher where Output == [FeedImage] {
-    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> {
-            handleEvents(receiveOutput: cache.saveIgnoringResult)
-        .eraseToAnyPublisher()
-    }
-}
-
-extension Publisher {
-    func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>) -> AnyPublisher<Output, Failure> {
-        self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
     }
 }
 
